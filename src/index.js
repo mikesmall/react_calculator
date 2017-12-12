@@ -5,5 +5,5 @@ import App from './App';
 import Calculator from './Calculator';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Calculator />, document.getElementById('root'));
 registerServiceWorker();
