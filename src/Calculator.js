@@ -3,6 +3,26 @@ import logo from './logo.svg';
 import './App.css';
 
 class Calculator extends Component {
+
+  constructor (props) {
+    super(props)
+
+    // This binding is necessary to make 'this' work in the callback
+    this.add = this.add.bind(this)
+
+    this.state = {
+      sum: 0
+    }
+  }
+
+  add() {
+    var sum = (parseInt(this.refs.numberOne.value) || 0) + (parseInt(this.refs.numberTwo.value) || 0);
+
+    this.setState({
+      sum: sum
+    })
+  }
+
   render () {
     return (
       <div className="container">
@@ -11,14 +31,14 @@ class Calculator extends Component {
           <h1 className="App-title">Adding with React</h1>
         </header>
 
-
         <div className="add">
-          <input type="text" /> <br />
+          <input type="text" ref="numberOne" onKeyUp={this.add} /> <br />
           <span> + </span>
-          <input type="text" />
+          <input type="text" ref="numberTwo" onKeyUp={this.add} /> <br />
           <span> = </span>
-          <h3>Addition results go here!</h3>
+          <h3>{this.state.sum}</h3>
         </div>
+        
       </div>
     )
   }
